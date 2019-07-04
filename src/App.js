@@ -24,6 +24,8 @@ class App extends React.Component {
         <Grid.Column width={9}>
           <h1>{article.title}</h1>
           <h4>{article.description}</h4>
+          <Image src={article.user.profile_image_90} />
+          <p>{article.user.name}</p>
         </Grid.Column>
         <Grid.Column width={3}>
           <span className="iconContainer">
