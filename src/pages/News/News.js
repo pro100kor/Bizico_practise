@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import { getArticles, getTags } from "../../common/api.js";
+import { getArticles, getTags, getUsers } from "../../common/api.js";
 import { Grid, Icon, Image } from "semantic-ui-react";
-
+import { Link } from "react-router-dom";
 class News extends React.Component {
   constructor(props) {
     super(props);
@@ -9,26 +9,31 @@ class News extends React.Component {
       error: null,
       isLoaded: false,
       articles: [],
-      tags: []
+      tags: [],
+      users: []
     };
   }
 
   render() {
-    const { isLoaded, articles, tags } = this.state;
-    console.log("articles в рендері", articles);
-    console.log("tags в рендері", tags);
+    const { isLoaded, articles, tags, users } = this.state;
+
     this.getTagsList();
     const list = articles.map(article => (
       <Grid className="news-card">
         <Grid.Column width={4}>
           <Image src={article.cover_image} />
         </Grid.Column>
-        <Grid.Column width={9}>
-          <h1>{article.title}</h1>
-          <h4>{article.description}</h4>
-          <Image className="circleImage" src={article.user.profile_image_90} />
-          <p>{article.user.name}</p>
-        </Grid.Column>
+        <Link to={`/users/${article.user.username}`}>
+          <Grid.Column width={9}>
+            <h1>{article.title}</h1>
+            <h4>{article.description}</h4>
+            <Image
+              className="circleImage"
+              src={article.user.profile_image_90}
+            />
+            <p>{article.user.name}</p>
+          </Grid.Column>
+        </Link>
         <Grid.Column width={3}>
           <span className="iconContainer">
             <Icon name="like" />
@@ -54,32 +59,39 @@ class News extends React.Component {
 
   getTagsList() {
     const { tags } = this.state;
-    console.log("this.getTagList", tags);
     const tagsList = tags.map(({ name }) => (
-      <span className="tags" key={name}>
-        #{name}
-      </span>
+      <Link to={`/${name}`}>
+        <span className="tags" key={name}>
+          #{name}
+        </span>
+      </Link>
     ));
     return tagsList;
   }
 
+  componentDidUpdate(preProps) {
+    if (preProps.match.params.tag !== this.props.match.params.tag) {
+      getArticles(this.props.match.params.tag).then(result => {
+        this.setState({
+          isLoaded: true,
+          articles: result.data
+        });
+      });
+    }
+  }
   componentDidMount() {
-    console.log(this.props);
     getArticles(this.props.match.params.tag).then(result => {
-      console.log("Після getArticles", result);
+      console.log(result);
       this.setState({
         isLoaded: true,
         articles: result.data
       });
     });
-
     getTags("https://dev.to/api/articles").then(result => {
-      console.log("Після getTags", result);
       this.setState({
         isLoaded: true,
         tags: result.data
       });
-      console.log("В самому кінці", result);
     });
   }
 }
