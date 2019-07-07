@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { getArticles, getTags, getUsers } from "../../common/api.js";
+import { getArticles, getTags } from "../../common/api.js";
 import { Grid, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 class News extends React.Component {
@@ -9,8 +9,7 @@ class News extends React.Component {
       error: null,
       isLoaded: false,
       articles: [],
-      tags: [],
-      users: []
+      tags: []
     };
   }
 
@@ -21,20 +20,22 @@ class News extends React.Component {
     const list = articles.map(article => (
       <Grid className="news-card">
         <Grid.Column width={4}>
-          <Image src={article.cover_image} />
-        </Grid.Column>
-        <Link to={`/users/${article.user.username}`}>
-          <Grid.Column width={9}>
-            <h1>{article.title}</h1>
-            <h4>{article.description}</h4>
+          <Link to={`/users/${article.user.username}`}>
             <Image
               className="circleImage"
               src={article.user.profile_image_90}
             />
-            <p>{article.user.name}</p>
-          </Grid.Column>
-        </Link>
-        <Grid.Column width={3}>
+            <p className="username">{article.user.name}</p>
+          </Link>
+          <h1>{article.title}</h1>
+        </Grid.Column>
+
+        <Grid.Column width={9}>
+          <h4>{article.description}</h4>
+          <Image src={article.cover_image} />
+        </Grid.Column>
+
+        <Grid.Column className="icons" width={3}>
           <span className="iconContainer">
             <Icon name="like" />
             <span className="likeImage">

@@ -8,6 +8,8 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   padding: 15px !important;
   margin: 10px !important;
+  /* width: 50em;
+  height: 30em */
 }
 .circleImage {
   border-radius: 100px;
@@ -35,4 +37,23 @@
   margin-right: auto;
   margin-top: 5em;
   width: 20em;
+}
+.ui.fixed.menu {
+  padding-top: 7px;
+}
+.username {
+  font-family: "Open Sans";
+  font-size: 20px;
+}
+.four.wide.column {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+.icons {
+  font-size: 40px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
