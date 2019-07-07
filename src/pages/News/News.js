@@ -82,7 +82,7 @@ class News extends React.Component {
   }
   componentDidMount() {
     getArticles(this.props.match.params.tag).then(result => {
-      console.log(result);
+      //console.log(result);
       this.setState({
         isLoaded: true,
         articles: result.data
