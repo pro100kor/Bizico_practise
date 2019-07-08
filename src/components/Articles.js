@@ -1,10 +1,9 @@
 import React, { Fragment } from "react";
-import { getArticles, getTags } from "../../common/api.js";
+import "./Articles.css";
 import { Grid, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import "./News.css";
 
-class News extends React.Component {
+class Articles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +18,9 @@ class News extends React.Component {
     const { isLoaded, articles, tags, users, imageSrc } = this.state;
 
     this.getTagsList();
-    const list = articles.map(article => (
+    const list = articles.map(article => <Articles />);
+
+    return (
       <Grid className="news-card">
         <Grid.Column width={4}>
           <Image
@@ -65,25 +66,19 @@ class News extends React.Component {
         </Grid.Column>
 
         {/* <Grid.Column className="icons" width={3}>
-          <span className="iconContainer">
-            <Icon name="like" />
-            <span className="likeImage">
-              {article.positive_reactions_count}
-            </span>
-          </span>
-          <br />
-          <span className="iconContainer">
-            <Icon name="comments" />
-            <span className="likeImage">{article.comments_count}</span>
-          </span>
-        </Grid.Column> */}
+              <span className="iconContainer">
+                <Icon name="like" />
+                <span className="likeImage">
+                  {article.positive_reactions_count}
+                </span>
+              </span>
+              <br />
+              <span className="iconContainer">
+                <Icon name="comments" />
+                <span className="likeImage">{article.comments_count}</span>
+              </span>
+            </Grid.Column> */}
       </Grid>
-    ));
-    return (
-      <Fragment>
-        <div className="ui fixed menu">{this.getTagsList()}</div>
-        <div className="ui main container">{list}</div>
-      </Fragment>
     );
   }
 
@@ -98,32 +93,5 @@ class News extends React.Component {
     ));
     return tagsList;
   }
-
-  componentDidUpdate(preProps) {
-    if (preProps.match.params.tag !== this.props.match.params.tag) {
-      getArticles(this.props.match.params.tag).then(result => {
-        this.setState({
-          isLoaded: true,
-          articles: result.data
-        });
-      });
-    }
-  }
-  componentDidMount() {
-    getArticles(this.props.match.params.tag).then(result => {
-      //console.log(result);
-      this.setState({
-        isLoaded: true,
-        articles: result.data,
-        imageSrc: result.data.cover_image
-      });
-    });
-    getTags("https://dev.to/api/articles").then(result => {
-      this.setState({
-        isLoaded: true,
-        tags: result.data
-      });
-    });
-  }
 }
-export default News;
+export default Articles;
