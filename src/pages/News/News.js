@@ -27,7 +27,7 @@ class News extends React.Component {
             />
             <p className="username">{article.user.name}</p>
           </Link>
-          <h1>{article.title}</h1>
+          <h1 className="articleTitle">{article.title}</h1>
         </Grid.Column>
 
         <Grid.Column width={9}>

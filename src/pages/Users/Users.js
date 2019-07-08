@@ -12,32 +12,45 @@ class Users extends React.Component {
     };
   }
   render() {
-    const { users, userGitHub, usertwitter, userWebsite_url } = this.state;
+    const {
+      users,
+      userGitHub,
+      userTwitter,
+      userWebsite_url,
+      userLocation
+    } = this.state;
     let {
       userGitHubUrl,
       userTwitterUrl,
       userGitHubColor,
       userTwitterColor,
-      userWebsite_urlColor
+      userWebsite_urlColor,
+      userLoc,
+      userWebsiteIcon,
+      userTwitterIcon,
+      userGitHubIcon
     } = "";
     console.log(users);
 
+    if (userLocation !== null && userLocation !== "") {
+      userLoc = <span className="wordFrom">from</span>;
+    }
+
     if (userWebsite_url !== null && userWebsite_url !== "") {
       userWebsite_urlColor = "green";
+      userWebsiteIcon = <Icon color={userWebsite_urlColor} name="user" />;
     }
 
     if (userGitHub !== null) {
       userGitHubUrl = "https://github.com/" + userGitHub;
       userGitHubColor = "green";
-    } else {
-      userGitHubUrl = "Nope";
+      userGitHubIcon = <Icon color={userGitHubColor} name="github" />;
     }
 
-    if (usertwitter !== null) {
-      userTwitterUrl = "https://twitter.com/" + usertwitter;
+    if (userTwitter !== null) {
+      userTwitterUrl = "https://twitter.com/" + userTwitter;
       userTwitterColor = "green";
-    } else {
-      userTwitterUrl = "Nope";
+      userTwitterIcon = <Icon color={userTwitterColor} name="twitter" />;
     }
 
     let usersContent = (
@@ -45,7 +58,7 @@ class Users extends React.Component {
         <Image src={users.profile_image} wrapped ui={false} />
         <Card.Content>
           <Card.Header>
-            {users.name} <span className="wordFrom">from</span> {users.location}
+            {users.name} {userLoc} {users.location}
           </Card.Header>
           <Card.Meta>
             <span className="date">{users.joined_at}</span>
@@ -55,18 +68,18 @@ class Users extends React.Component {
         <Card.Content extra>
           <div>
             <span>
-              <Icon color={userWebsite_urlColor} name="user" />
+              {userWebsiteIcon}
               <a href={users.website_url}> {users.website_url}</a>
             </span>
             <span>
               <p>
-                <Icon color={userGitHubColor} name="github" />
+                {userGitHubIcon}
                 <a href={userGitHubUrl}> {userGitHubUrl}</a>
               </p>
             </span>
             <span>
               <p>
-                <Icon color={userTwitterColor} name="twitter" />
+                {userTwitterIcon}
                 <a href={userTwitterUrl}> {userTwitterUrl}</a>
               </p>
             </span>
@@ -85,7 +98,8 @@ class Users extends React.Component {
         users: result.data,
         userGitHub: result.data.github_username,
         userTwitter: result.data.twitter_username,
-        userWebsite_url: result.data.website_url
+        userWebsite_url: result.data.website_url,
+        userLocation: result.data.location
       });
     });
   }

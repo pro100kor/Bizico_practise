@@ -57,3 +57,6 @@
   align-items: center !important;
   justify-content: center !important;
 }
+.articleTitle {
+  font-size: 1.5vw;
+}
