@@ -69,18 +69,24 @@ class Users extends React.Component {
           <div>
             <span>
               {userWebsiteIcon}
-              <a href={users.website_url}> {users.website_url}</a>
+              <a href={users.website_url} target="blank">
+                {users.website_url}
+              </a>
             </span>
             <span>
               <p>
                 {userGitHubIcon}
-                <a href={userGitHubUrl}> {userGitHubUrl}</a>
+                <a href={userGitHubUrl} target="blank">
+                  {userGitHubUrl}
+                </a>
               </p>
             </span>
             <span>
               <p>
                 {userTwitterIcon}
-                <a href={userTwitterUrl}> {userTwitterUrl}</a>
+                <a href={userTwitterUrl} target="blank">
+                  {userTwitterUrl}
+                </a>
               </p>
             </span>
           </div>
