@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
 import { getArticles, getTags } from "../../common/api.js";
-import { Grid, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "./News.css";
+import Article from "../../components/Article.js";
+import Tags from "../../components/Article.js";
 
 class News extends React.Component {
   constructor(props) {
@@ -16,59 +17,25 @@ class News extends React.Component {
   }
 
   render() {
-    const { isLoaded, articles, tags, users, imageSrc } = this.state;
+    const { articles } = this.state;
 
-    this.getTagsList();
-    const list = articles.map(article => (
-      <Grid className="news-card">
-        <Grid.Column width={4}>
-          <Image
-            src={
-              article.cover_image ||
-              "https://react.semantic-ui.com/images/wireframe/image.png"
-            }
-          />
-        </Grid.Column>
-
-        <Grid.Column width={12}>
-          <h1 className="articleTitle">{article.title}</h1>
-          <Link to={`/users/${article.user.username}`}>
-            <Grid className="user">
-              <Grid.Column mobile={3} tablet={3} computer={3}>
-                <Image
-                  className="circleImage"
-                  src={article.user.profile_image_90}
-                />
-              </Grid.Column>
-              <Grid.Column mobile={13} tablet={14} computer={15}>
-                <span className="username">{article.user.name}</span>{" "}
-              </Grid.Column>
-            </Grid>
-          </Link>
-
-          <Grid className="user">
-            <Grid.Column width={3}>
-              <span className="iconContainer">
-                <Icon name="like" />
-                <span className="likeImage">
-                  {article.positive_reactions_count}
-                </span>
-              </span>
-            </Grid.Column>
-            <Grid.Column width={3}>
-              <span className="iconContainer">
-                <Icon name="comments" />
-                <span className="likeImage">{article.comments_count}</span>
-              </span>
-            </Grid.Column>
-          </Grid>
-        </Grid.Column>
-      </Grid>
-    ));
     return (
       <Fragment>
-        <div className="ui fixed menu">{this.getTagsList()}</div>
-        <div className="ui main container">{list}</div>
+        <div className="ui fixed menu">{<Tags />}</div>
+        <div className="ui main container">
+          {articles.map(article => (
+            <Article
+              key={article.title}
+              title={article.title}
+              cover_image={article.cover_image}
+              username={article.user.username}
+              profile_image_90={article.user.profile_image_90}
+              name={article.user.name}
+              positive_reactions_count={article.positive_reactions_count}
+              comments_count={article.comments_count}
+            />
+          ))}
+        </div>
       </Fragment>
     );
   }
