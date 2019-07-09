@@ -1,8 +1,8 @@
 import React from "react";
-import { getTags } from "../../common/api.js";
+import { getTags } from "../common/api.js";
 import { Link } from "react-router-dom";
 
-class Tags extends React {
+class Tags extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

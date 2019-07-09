@@ -1,9 +1,8 @@
 import React, { Fragment } from "react";
-import { getArticles, getTags } from "../../common/api.js";
-import { Link } from "react-router-dom";
+import { getArticles } from "../../common/api.js";
 import "./News.css";
 import Article from "../../components/Article.js";
-import Tags from "../../components/Article.js";
+import Tags from "../../components/Tags.js";
 
 class News extends React.Component {
   constructor(props) {
@@ -40,18 +39,6 @@ class News extends React.Component {
     );
   }
 
-  getTagsList() {
-    const { tags } = this.state;
-    const tagsList = tags.map(({ name }) => (
-      <Link to={`/${name}`}>
-        <span className="tags" key={name}>
-          #{name}
-        </span>
-      </Link>
-    ));
-    return tagsList;
-  }
-
   componentDidUpdate(preProps) {
     if (preProps.match.params.tag !== this.props.match.params.tag) {
       getArticles(this.props.match.params.tag).then(result => {
@@ -69,12 +56,6 @@ class News extends React.Component {
         isLoaded: true,
         articles: result.data,
         imageSrc: result.data.cover_image
-      });
-    });
-    getTags("https://dev.to/api/articles").then(result => {
-      this.setState({
-        isLoaded: true,
-        tags: result.data
       });
     });
   }
