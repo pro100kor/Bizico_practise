@@ -1,0 +1,41 @@
+.articleTitle {
+  font-size: 2.6rem;
+}
+.circleImage {
+  border-radius: 100px;
+  height: 40px;
+  display: inline-block !important;
+}
+.articleTitle {
+  font-size: 1.5vw;
+}
+.username {
+  font-family: "Open Sans";
+  font-size: 15px;
+  margin-left: 20px !important;
+}
+.likeImage {
+  margin-left: 3px;
+}
+.iconContainer {
+  margin-left: 12px;
+}
+.icons {
+  font-size: 40px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.news-card {
+  padding: 15px !important;
+  margin: 10px !important;
+  /* width: 50em;
+    height: 30em */
+  min-height: 200px;
+}
+.four.wide.column {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}

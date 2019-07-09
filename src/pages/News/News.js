@@ -26,12 +26,10 @@ class News extends React.Component {
             <Article
               key={article.title}
               title={article.title}
-              cover_image={article.cover_image}
+              coverImage={article.cover_image}
               username={article.user.username}
               profile_image_90={article.user.profile_image_90}
               name={article.user.name}
-              positive_reactions_count={article.positive_reactions_count}
-              comments_count={article.comments_count}
             />
           ))}
         </div>
@@ -55,7 +53,7 @@ class News extends React.Component {
       this.setState({
         isLoaded: true,
         articles: result.data,
-        imageSrc: result.data.cover_image
+        imageSrc: result.data.coverImage
       });
     });
   }
