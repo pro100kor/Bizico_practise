@@ -8,12 +8,20 @@ class Article extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tags: []
+      tags: [],
+      tagList: []
     };
   }
 
   render() {
-    const { title, coverImage, username, profile_image_90, name } = this.props;
+    const {
+      title,
+      coverImage,
+      username,
+      profile_image_90,
+      name,
+      tagList
+    } = this.props;
 
     return (
       <Grid className="news-card">
@@ -22,6 +30,11 @@ class Article extends React.Component {
         </Grid.Column>
 
         <Grid.Column width={10}>
+          <span className="tagList">
+            {tagList.map(tag => (
+              <a>{tag}</a>
+            ))}
+          </span>
           <h1 className="articleTitle">{title}</h1>
           <Link to={`/users/${username}`}>
             <Image className="circleImage" src={profile_image_90} />

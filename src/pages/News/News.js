@@ -24,12 +24,12 @@ class News extends React.Component {
         <div className="ui main container">
           {articles.map(article => (
             <Article
-              key={article.title}
               title={article.title}
               coverImage={article.cover_image}
               username={article.user.username}
               profile_image_90={article.user.profile_image_90}
               name={article.user.name}
+              tagList={this.state.tagList}
             />
           ))}
         </div>
@@ -53,7 +53,8 @@ class News extends React.Component {
       this.setState({
         isLoaded: true,
         articles: result.data,
-        imageSrc: result.data.coverImage
+        imageSrc: result.data.coverImage,
+        tagList: result.data.tagList
       });
     });
   }
