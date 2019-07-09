@@ -29,7 +29,6 @@ class News extends React.Component {
               username={article.user.username}
               profile_image_90={article.user.profile_image_90}
               name={article.user.name}
-              tagList={this.state.tagList}
             />
           ))}
         </div>
@@ -52,9 +51,7 @@ class News extends React.Component {
       //console.log(result);
       this.setState({
         isLoaded: true,
-        articles: result.data,
-        imageSrc: result.data.coverImage,
-        tagList: result.data.tagList
+        articles: result.data
       });
     });
   }
