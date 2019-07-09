@@ -34,7 +34,7 @@ class News extends React.Component {
           <h1 className="articleTitle">{article.title}</h1>
           <Link to={`/users/${article.user.username}`}>
             <Grid className="user">
-              <Grid.Column mobile={3} tablet={2} computer={1}>
+              <Grid.Column mobile={3} tablet={3} computer={3}>
                 <Image
                   className="circleImage"
                   src={article.user.profile_image_90}
@@ -63,20 +63,6 @@ class News extends React.Component {
             </Grid.Column>
           </Grid>
         </Grid.Column>
-
-        {/* <Grid.Column className="icons" width={3}>
-          <span className="iconContainer">
-            <Icon name="like" />
-            <span className="likeImage">
-              {article.positive_reactions_count}
-            </span>
-          </span>
-          <br />
-          <span className="iconContainer">
-            <Icon name="comments" />
-            <span className="likeImage">{article.comments_count}</span>
-          </span>
-        </Grid.Column> */}
       </Grid>
     ));
     return (

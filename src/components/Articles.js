@@ -16,7 +16,7 @@ class Articles extends React.Component {
 
   render() {
     const { isLoaded, articles, tags, users, imageSrc } = this.state;
-
+    const { article } = this.props;
     this.getTagsList();
     const list = articles.map(article => <Articles />);
 
@@ -25,7 +25,7 @@ class Articles extends React.Component {
         <Grid.Column width={4}>
           <Image
             src={
-              article.cover_image ||
+              this.props.article.cover_image ||
               "https://react.semantic-ui.com/images/wireframe/image.png"
             }
           />
@@ -64,34 +64,8 @@ class Articles extends React.Component {
             </Grid.Column>
           </Grid>
         </Grid.Column>
-
-        {/* <Grid.Column className="icons" width={3}>
-              <span className="iconContainer">
-                <Icon name="like" />
-                <span className="likeImage">
-                  {article.positive_reactions_count}
-                </span>
-              </span>
-              <br />
-              <span className="iconContainer">
-                <Icon name="comments" />
-                <span className="likeImage">{article.comments_count}</span>
-              </span>
-            </Grid.Column> */}
       </Grid>
     );
-  }
-
-  getTagsList() {
-    const { tags } = this.state;
-    const tagsList = tags.map(({ name }) => (
-      <Link to={`/${name}`}>
-        <span className="tags" key={name}>
-          #{name}
-        </span>
-      </Link>
-    ));
-    return tagsList;
   }
 }
 export default Articles;
