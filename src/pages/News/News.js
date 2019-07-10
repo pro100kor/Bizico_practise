@@ -1,8 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { getArticles } from "../../common/api.js";
 import "./News.css";
 import Article from "../../components/Article.js";
-import Tags from "../../components/Tags.js";
 
 class News extends React.Component {
   constructor(props) {
@@ -19,21 +18,18 @@ class News extends React.Component {
     const { articles } = this.state;
 
     return (
-      <Fragment>
-        <div className="ui fixed menu">{<Tags />}</div>
-        <div className="ui main container">
-          {articles.map(article => (
-            <Article
-              title={article.title}
-              coverImage={article.cover_image}
-              username={article.user.username}
-              profile_image_90={article.user.profile_image_90}
-              name={article.user.name}
-              tagList={article.tag_list}
-            />
-          ))}
-        </div>
-      </Fragment>
+      <div className="ui main container">
+        {articles.map(article => (
+          <Article
+            title={article.title}
+            coverImage={article.cover_image}
+            username={article.user.username}
+            profile_image_90={article.user.profile_image_90}
+            name={article.user.name}
+            tagList={article.tag_list}
+          />
+        ))}
+      </div>
     );
   }
 
