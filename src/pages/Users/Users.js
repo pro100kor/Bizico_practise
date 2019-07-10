@@ -1,14 +1,16 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Card, Icon, Image } from "semantic-ui-react";
-import { getUsers } from "../../common/api";
+import { getUsers, getUsersNews } from "../../common/api";
 import "./Users.css";
+import Article from "../../components/Article.js";
 class Users extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
       isLoaded: false,
-      users: []
+      users: [],
+      articles: []
     };
   }
   render() {
@@ -17,7 +19,8 @@ class Users extends React.Component {
       userGitHub,
       userTwitter,
       userWebsite_url,
-      userLocation
+      userLocation,
+      articles
     } = this.state;
     let {
       userGitHubUrl,
@@ -93,7 +96,23 @@ class Users extends React.Component {
         </Card.Content>
       </Card>
     );
-    return <div className="userscontant main container">{usersContent}</div>;
+    return (
+      <Fragment>
+        <div className="userscontant main container">{usersContent}</div>
+        <div className="ui main container">
+          {articles.map(article => (
+            <Article
+              title={article.title}
+              coverImage={article.cover_image}
+              username={article.user.username}
+              profile_image_90={article.user.profile_image_90}
+              name={article.user.name}
+              tagList={article.tag_list}
+            />
+          ))}
+        </div>
+      </Fragment>
+    );
   }
 
   componentDidMount() {
@@ -106,6 +125,13 @@ class Users extends React.Component {
         userTwitter: result.data.twitter_username,
         userWebsite_url: result.data.website_url,
         userLocation: result.data.location
+      });
+    });
+
+    getUsersNews(this.props.match.params.username).then(result => {
+      console.log("usersNews :", result);
+      this.setState({
+        articles: result.data
       });
     });
   }
