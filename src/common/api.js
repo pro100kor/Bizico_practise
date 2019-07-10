@@ -16,7 +16,3 @@ export function getUsers(username) {
   let url = "https://dev.to/api/users/" + "by_username?url=" + username;
   return axios.get(url);
 }
-
-export function getTagsOfNews() {
-  return axios.get("https://dev.to/api/articles");
-}

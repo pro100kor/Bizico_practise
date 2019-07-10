@@ -29,6 +29,7 @@ class News extends React.Component {
               username={article.user.username}
               profile_image_90={article.user.profile_image_90}
               name={article.user.name}
+              tagList={article.tag_list}
             />
           ))}
         </div>
