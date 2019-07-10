@@ -21,3 +21,7 @@ export function getUsersNews(username) {
   let url = "https://dev.to/api/articles?username=" + username;
   return axios.get(url);
 }
+export function getNewsArticle(articleId) {
+  let url = "https://dev.to/api/articles/" + articleId;
+  return axios.get(url);
+}

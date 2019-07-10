@@ -9,7 +9,8 @@ class Article extends React.Component {
     super(props);
     this.state = {
       tags: [],
-      tagList: []
+      tagList: [],
+      newsArticleId: []
     };
   }
 
@@ -20,13 +21,16 @@ class Article extends React.Component {
       username,
       profile_image_90,
       name,
-      tagList
+      tagList,
+      newsArticleId
     } = this.props;
 
     return (
       <Grid className="news-card">
         <Grid.Column width={6}>
-          <Image src={coverImage || EmptyImage} fluid />
+          <Link to={`/api/articles/${newsArticleId}`}>
+            <Image src={coverImage || EmptyImage} fluid />
+          </Link>
         </Grid.Column>
 
         <Grid.Column width={10}>
@@ -35,7 +39,9 @@ class Article extends React.Component {
               <Link to={`/${tag}`}> #{tag}</Link>
             ))}
           </span>
-          <h1 className="articleTitle">{title}</h1>
+          <Link to={`/api/articles/${newsArticleId}`}>
+            <h1 className="articleTitle">{title}</h1>
+          </Link>
           <Link to={`/users/${username}`}>
             <Image className="circleImage" src={profile_image_90} />
             <span className="username">{name.toUpperCase()}</span>{" "}

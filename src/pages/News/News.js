@@ -1,5 +1,5 @@
 import React from "react";
-import { getArticles } from "../../common/api.js";
+import { getArticles, getNewsArticle } from "../../common/api.js";
 import "./News.css";
 import Article from "../../components/Article.js";
 
@@ -27,6 +27,7 @@ class News extends React.Component {
             profile_image_90={article.user.profile_image_90}
             name={article.user.name}
             tagList={article.tag_list}
+            newsArticleId={article.id}
           />
         ))}
       </div>

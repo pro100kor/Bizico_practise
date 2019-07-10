@@ -13,6 +13,7 @@ class App extends React.Component {
         <Route path="/users/:username" component={Users} />
         <Route exact path="/" component={News} />
         <Route exact path="/:tag" component={News} />
+        <Route path="/articles/:id" />
       </Router>
     );
   }
