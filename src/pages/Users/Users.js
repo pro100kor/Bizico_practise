@@ -18,7 +18,7 @@ class Users extends React.Component {
       users,
       userGitHub,
       userTwitter,
-      userWebsite_url,
+      userWebsiteUrl,
       userLocation,
       articles
     } = this.state;
@@ -27,7 +27,7 @@ class Users extends React.Component {
       userTwitterUrl,
       userGitHubColor,
       userTwitterColor,
-      userWebsite_urlColor,
+      userWebsiteUrlColor,
       userLoc,
       userWebsiteIcon,
       userTwitterIcon,
@@ -35,19 +35,9 @@ class Users extends React.Component {
     } = "";
     console.log(users);
 
-    if (userLocation !== null && userLocation !== "") {
-      userLoc = <span className="wordFrom">from</span>;
-    }
-
-    if (userWebsite_url !== null && userWebsite_url !== "") {
-      userWebsite_urlColor = "green";
-      userWebsiteIcon = <Icon color={userWebsite_urlColor} name="user" />;
-    }
-
-    if (userGitHub !== null) {
-      userGitHubUrl = "https://github.com/" + userGitHub;
-      userGitHubColor = "green";
-      userGitHubIcon = <Icon color={userGitHubColor} name="github" />;
+    if (userWebsiteUrl !== null && userWebsiteUrl !== "") {
+      userWebsiteUrlColor = "green";
+      userWebsiteIcon = <Icon color={userWebsiteUrlColor} name="user" />;
     }
 
     if (userTwitter !== null) {
@@ -61,7 +51,9 @@ class Users extends React.Component {
         <Image src={users.profile_image} wrapped ui={false} />
         <Card.Content>
           <Card.Header>
-            {users.name} {userLoc} {users.location}
+            {users.name}
+            {userLocation && <span className="wordFrom">from</span>}
+            {users.location}
           </Card.Header>
           <Card.Meta>
             <span className="date">{users.joined_at}</span>
@@ -78,10 +70,14 @@ class Users extends React.Component {
             </span>
             <span>
               <p>
-                {userGitHubIcon}
-                <a href={userGitHubUrl} target="blank">
-                  {userGitHubUrl}
-                </a>
+                {userGitHub && (
+                  <Fragment>
+                    <Icon color="green" name="github" />
+                    <a href={"https://github.com/" + userGitHub} target="blank">
+                      {"https://github.com/" + userGitHub}
+                    </a>
+                  </Fragment>
+                )}
               </p>
             </span>
             <span>
@@ -108,6 +104,7 @@ class Users extends React.Component {
               profile_image_90={article.user.profile_image_90}
               name={article.user.name}
               tagList={article.tag_list}
+              newsArticleId={article.id}
             />
           ))}
         </div>
@@ -123,7 +120,7 @@ class Users extends React.Component {
         users: result.data,
         userGitHub: result.data.github_username,
         userTwitter: result.data.twitter_username,
-        userWebsite_url: result.data.website_url,
+        userWebsiteUrl: result.data.website_url,
         userLocation: result.data.location
       });
     });

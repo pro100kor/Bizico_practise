@@ -1,5 +1,6 @@
-import React from "react";
-import getNewsArticle from "./../common/api.js";
+import React, { Fragment } from "react";
+import { getNewsArticle } from "./../common/api.js";
+import "./FullNews.scss";
 
 class FullNews extends React.Component {
   constructor(props) {
@@ -7,17 +8,23 @@ class FullNews extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      articles: [],
-      tags: []
+      article: []
     };
   }
 
   render() {
-    return <div>1234</div>;
+    const { article } = this.state;
+
+    return (
+      <div
+        className="fullNewsDiv"
+        dangerouslySetInnerHTML={{ __html: article.body_html }}
+      />
+    );
   }
 
   componentDidMount() {
-    getNewsArticle(134937).then(result => {
+    getNewsArticle(this.props.match.params.id).then(result => {
       console.log("FullNews: ", result);
       this.setState({
         article: result.data

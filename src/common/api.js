@@ -22,7 +22,7 @@ export function getUsersNews(username) {
   return axios.get(url);
 }
 
-export default function getNewsArticle(articleId) {
+export  function getNewsArticle(articleId) {
   let url = "https://dev.to/api/articles/" + articleId;
   return axios.get(url);
 }

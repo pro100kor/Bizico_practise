@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css?family=Bahianita&display=swap");
+
+.fullNewsDiv {
+  padding-top: 50px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 70vw;
+  margin: auto;
+
+  .article-body-image-wrapper {
+    width: 40vw !important;
+    height: auto !important;
+  }
+
+  p {
+    font-family: "Slabo 15px", serif !important;
+    font-size: 2rem;
+  }
+
+  img {
+    max-width: 30vw;
+    max-height: auto;
+  }
+
+  .highlight {
+    background: #29292e;
+    color: #f8f8f2;
+    max-width: 70vw;
+
+    .highlight.go {
+      overflow: auto;
+    }
+
+    .k {
+      color: #66d9ef;
+    }
+
+    .o {
+      color: #f92672;
+    }
+
+    .m {
+      color: #ae81ff;
+    }
+
+    .s {
+      color: #e6db74;
+    }
+
+    .c {
+      color: #75715e;
+    }
+  }
+
+  pre {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    margin: 1em 0px;
+  }
+
+  .ltag__twitter-tweet__play-butt {
+    visibility: hidden;
+    width: 0px !important;
+    height: 0px !important;
+  }
+
+  .ltag__twitter-tweet__twitter-logo {
+    width: 0px !important;
+    height: 0px !important;
+    visibility: hidden;
+  }
+
+  .ltag__twitter-tweet__username {
+    visibility: hidden;
+    width: 0px !important;
+    height: 0px !important;
+  }
+
+  .ltag__twitter-tweet__body {
+    visibility: hidden;
+    width: 0px !important;
+    height: 0px !important;
+  }
+
+  .ltag__twitter-tweet__actions {
+    visibility: hidden;
+    width: 0px !important;
+    height: 0px !important;
+  }
+
+  .ltag__twitter-tweet__media--video-preview {
+    img {
+      visibility: hidden;
+      width: 0px !important;
+      height: 0px !important;
+    }
+  }
+}
