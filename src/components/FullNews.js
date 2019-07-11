@@ -1,5 +1,5 @@
 import React from "react";
-import getNewsArticle from "../common/api.js";
+import getNewsArticle from "./../common/api.js";
 
 class FullNews extends React.Component {
   constructor(props) {
@@ -13,12 +13,12 @@ class FullNews extends React.Component {
   }
 
   render() {
-    return;
+    return <div>1234</div>;
   }
 
   componentDidMount() {
-    getNewsArticle().then(result => {
-      console.log(result);
+    getNewsArticle(134937).then(result => {
+      console.log("FullNews: ", result);
       this.setState({
         article: result.data
       });

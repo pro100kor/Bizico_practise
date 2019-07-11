@@ -28,7 +28,7 @@ class Article extends React.Component {
     return (
       <Grid className="news-card">
         <Grid.Column width={6}>
-          <Link to={`/api/articles/${newsArticleId}`}>
+          <Link to={`/articles/${newsArticleId}`}>
             <Image src={coverImage || EmptyImage} fluid />
           </Link>
         </Grid.Column>
@@ -39,7 +39,7 @@ class Article extends React.Component {
               <Link to={`/${tag}`}> #{tag}</Link>
             ))}
           </span>
-          <Link to={`/api/articles/${newsArticleId}`}>
+          <Link to={`/articles/${newsArticleId}`}>
             <h1 className="articleTitle">{title}</h1>
           </Link>
           <Link to={`/users/${username}`}>

@@ -1,5 +1,5 @@
 import React from "react";
-import { getArticles, getNewsArticle } from "../../common/api.js";
+import { getArticles } from "../../common/api.js";
 import "./News.css";
 import Article from "../../components/Article.js";
 
