@@ -22,29 +22,7 @@ class Users extends React.Component {
       userLocation,
       articles
     } = this.state;
-    let {
-      userGitHubUrl,
-      userTwitterUrl,
-      userGitHubColor,
-      userTwitterColor,
-      userWebsiteUrlColor,
-      userLoc,
-      userWebsiteIcon,
-      userTwitterIcon,
-      userGitHubIcon
-    } = "";
-    console.log(users);
-
-    if (userWebsiteUrl !== null && userWebsiteUrl !== "") {
-      userWebsiteUrlColor = "green";
-      userWebsiteIcon = <Icon color={userWebsiteUrlColor} name="user" />;
-    }
-
-    if (userTwitter !== null) {
-      userTwitterUrl = "https://twitter.com/" + userTwitter;
-      userTwitterColor = "green";
-      userTwitterIcon = <Icon color={userTwitterColor} name="twitter" />;
-    }
+    //console.log(users);
 
     let usersContent = (
       <Card align="center">
@@ -52,7 +30,7 @@ class Users extends React.Component {
         <Card.Content>
           <Card.Header>
             {users.name}
-            {userLocation && <span className="wordFrom">from</span>}
+            {userLocation && <span className="wordFrom"> from </span>}
             {users.location}
           </Card.Header>
           <Card.Meta>
@@ -63,10 +41,14 @@ class Users extends React.Component {
         <Card.Content extra>
           <div>
             <span>
-              {userWebsiteIcon}
-              <a href={users.website_url} target="blank">
-                {users.website_url}
-              </a>
+              {userWebsiteUrl && (
+                <Fragment>
+                  <Icon color="green" name="user" />
+                  <a href={users.website_url} target="blank">
+                    {users.website_url}
+                  </a>
+                </Fragment>
+              )}
             </span>
             <span>
               <p>
@@ -82,10 +64,17 @@ class Users extends React.Component {
             </span>
             <span>
               <p>
-                {userTwitterIcon}
-                <a href={userTwitterUrl} target="blank">
-                  {userTwitterUrl}
-                </a>
+                {userTwitter && (
+                  <Fragment>
+                    <Icon color="green" name="twitter" />
+                    <a
+                      href={"https://twitter.com/" + userTwitter}
+                      target="blank"
+                    >
+                      {"https://twitter.com/" + userTwitter}
+                    </a>
+                  </Fragment>
+                )}
               </p>
             </span>
           </div>

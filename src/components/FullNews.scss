@@ -27,10 +27,7 @@
     background: #29292e;
     color: #f8f8f2;
     max-width: 70vw;
-
-    .highlight.go {
-      overflow: auto;
-    }
+    overflow: auto;
 
     .k {
       color: #66d9ef;
@@ -48,8 +45,16 @@
       color: #e6db74;
     }
 
+    .s1 {
+      color: #e6db74;
+    }
+
     .c {
       color: #75715e;
+    }
+
+    .nt {
+      color: #f92672;
     }
   }
 
@@ -78,11 +83,11 @@
     height: 0px !important;
   }
 
-  .ltag__twitter-tweet__body {
-    visibility: hidden;
-    width: 0px !important;
-    height: 0px !important;
-  }
+  // .ltag__twitter-tweet__body {
+  //   visibility: hidden;
+  //   width: 0px !important;
+  //   height: 0px !important;
+  // }
 
   .ltag__twitter-tweet__actions {
     visibility: hidden;
