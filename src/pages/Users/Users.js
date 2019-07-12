@@ -20,7 +20,8 @@ class Users extends React.Component {
     if (e.target.value) {
       this.setState({
         articles: this.state.articles.filter(
-          article => ~article.title.toLowerCase().indexOf(e.target.value)
+          article =>
+            ~article.title.toLowerCase().indexOf(e.target.value.toLowerCase())
         )
       });
     } else {
