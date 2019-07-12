@@ -10,12 +10,22 @@ class Users extends React.Component {
       error: null,
       isLoaded: false,
       users: [],
-      articles: []
+      articles: [],
+      tmpArticles: []
     };
   }
 
   inputHeandler = e => {
     console.log(e.target.value);
+    if (e.target.value) {
+      this.setState({
+        articles: this.state.articles.filter(
+          article => ~article.title.toLowerCase().indexOf(e.target.value)
+        )
+      });
+    } else {
+      this.setState({ articles: this.state.tmpArticles });
+    }
   };
 
   render() {
@@ -129,7 +139,8 @@ class Users extends React.Component {
     getUsersNews(this.props.match.params.username).then(result => {
       console.log("usersNews :", result);
       this.setState({
-        articles: result.data
+        articles: result.data,
+        tmpArticles: result.data
       });
     });
   }
