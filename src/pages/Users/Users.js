@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Card, Icon, Image } from "semantic-ui-react";
+import { Card, Icon, Image, Input } from "semantic-ui-react";
 import { getUsers, getUsersNews } from "../../common/api";
 import "./Users.css";
 import Article from "../../components/Article.js";
@@ -13,6 +13,11 @@ class Users extends React.Component {
       articles: []
     };
   }
+
+  inputHeandler = e => {
+    console.log(e.target.value);
+  };
+
   render() {
     const {
       users,
@@ -56,7 +61,7 @@ class Users extends React.Component {
                   <Fragment>
                     <Icon color="green" name="github" />
                     <a href={"https://github.com/" + userGitHub} target="blank">
-                      {"https://github.com/" + userGitHub}
+                      {"github.com/" + userGitHub}
                     </a>
                   </Fragment>
                 )}
@@ -71,7 +76,7 @@ class Users extends React.Component {
                       href={"https://twitter.com/" + userTwitter}
                       target="blank"
                     >
-                      {"https://twitter.com/" + userTwitter}
+                      {"twitter.com/" + userTwitter}
                     </a>
                   </Fragment>
                 )}
@@ -83,7 +88,14 @@ class Users extends React.Component {
     );
     return (
       <Fragment>
-        <div className="userscontant main container">{usersContent}</div>
+        <div className="userscontant main container">
+          {usersContent}
+          <Input
+            icon="search"
+            placeholder="Search..."
+            onChange={this.inputHeandler}
+          />
+        </div>
         <div className="ui main container">
           {articles.map(article => (
             <Article

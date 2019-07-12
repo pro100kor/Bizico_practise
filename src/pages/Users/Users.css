@@ -1,3 +1,6 @@
 .wordFrom {
   color: darkgray !important;
 }
+.ui.icon.input {
+  width: 280px;
+}

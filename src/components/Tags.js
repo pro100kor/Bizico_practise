@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { getTags } from "../common/api.js";
 import { Link } from "react-router-dom";
 import "./Tags.css";
+import MainImage from "../assets/logo.svg";
 
 class Tags extends React.Component {
   constructor(props) {
@@ -24,7 +25,14 @@ class Tags extends React.Component {
         </span>
       </Link>
     ));
-    return tagsList;
+    return (
+      <Fragment>
+        <Link to="/">
+          <img className="mainLogo" src={MainImage} />
+        </Link>
+        {tagsList}
+      </Fragment>
+    );
   }
 
   componentDidMount() {

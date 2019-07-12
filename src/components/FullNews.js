@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { getNewsArticle } from "./../common/api.js";
 import "./FullNews.scss";
 
@@ -16,10 +16,16 @@ class FullNews extends React.Component {
     const { article } = this.state;
 
     return (
-      <div
-        className="fullNewsDiv"
-        dangerouslySetInnerHTML={{ __html: article.body_html }}
-      />
+      <Fragment>
+        <div className="fullNewsImageAndTitle">
+          <img src={article.cover_image} />
+          <span className="title">{article.title}</span>
+        </div>
+        <div
+          className="fullNewsDiv"
+          dangerouslySetInnerHTML={{ __html: article.body_html }}
+        />
+      </Fragment>
     );
   }
 
