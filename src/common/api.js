@@ -4,10 +4,14 @@ export function getTags() {
   return axios.get("https://dev.to/api/tags");
 }
 
-export function getArticles(tagName) {
+export function getArticles(tagName, page) {
   let url = "https://dev.to/api/articles";
-  if (tagName) {
-    url = "https://dev.to/api/articles?tag=" + tagName;
+  if (tagName || page) {
+    url =
+      "https://dev.to/api/articles?tag=" +
+      (tagName ? tagName : "") +
+      "&page=" +
+      (page ? page : "");
   }
   return axios.get(url);
 }
@@ -22,7 +26,7 @@ export function getUsersNews(username) {
   return axios.get(url);
 }
 
-export  function getNewsArticle(articleId) {
+export function getNewsArticle(articleId) {
   let url = "https://dev.to/api/articles/" + articleId;
   return axios.get(url);
 }
