@@ -4,7 +4,9 @@ import "./News.css";
 import Article from "../../components/Article.js";
 import InfiniteScroll from "react-infinite-scroller";
 import { Segment, Dimmer, Image, Loader } from "semantic-ui-react";
-import loadingImage from "../../assets/short-paragraph.png";
+import whiteLoadingImage from "../../assets/shortParagraphWhite.png";
+import grayLoadingImage from "../../assets/shortParagraphGray.png";
+import darkLoadingImage from "../../assets/shortParagraphDark.png";
 
 class News extends React.Component {
   constructor(props) {
@@ -19,7 +21,7 @@ class News extends React.Component {
   }
 
   loadItems = page => {
-    console.log(page);
+    //console.log(page);
     getArticles(this.props.match.params.tag, page).then(result => {
       //console.log(result);
       this.setState({
@@ -37,9 +39,9 @@ class News extends React.Component {
           <Loader size="massive">Loading</Loader>
         </Dimmer>
 
-        <Image src={loadingImage} />
-        <Image src={loadingImage} />
-        <Image src={loadingImage} />
+        <Image src={whiteLoadingImage} />
+        <Image src={grayLoadingImage} />
+        <Image src={darkLoadingImage} />
       </Segment>
     );
     return (

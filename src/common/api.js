@@ -7,11 +7,17 @@ export function getTags() {
 export function getArticles(tagName, page) {
   let url = "https://dev.to/api/articles";
   if (tagName || page) {
-    url =
-      "https://dev.to/api/articles?tag=" +
-      (tagName ? tagName : "") +
-      "&page=" +
-      (page ? page : "");
+    url += "?";
+    const params = [];
+    if (tagName) {
+      params.push(`tag=${tagName}`);
+    }
+
+    if (page) {
+      params.push(`page=${page}`);
+    }
+
+    url += params.join("&");
   }
   return axios.get(url);
 }

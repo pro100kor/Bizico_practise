@@ -20,6 +20,9 @@
   padding: 1em 1.5em;
   line-height: 1.4285em;
 }
-.loading {
-  font-size: 50;
+.ui.active.transition.visible.dimmer {
+  background-color: white;
+}
+.ui.massive.text.loader {
+  background-color: black;
 }
