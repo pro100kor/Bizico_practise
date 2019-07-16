@@ -2,7 +2,7 @@ import "./Login.css";
 import React, { Fragment } from "react";
 import { Form, Button } from "semantic-ui-react";
 import Cookies from "js-cookie";
-import { users } from "../common/auth.js";
+import { users } from "../../common/auth.js";
 
 class Login extends React.Component {
   constructor(props) {

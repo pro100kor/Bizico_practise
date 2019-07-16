@@ -1,7 +1,7 @@
 import React from "react";
 import { getArticles } from "../../common/api.js";
 import "./News.css";
-import Article from "../../components/Article.js";
+import Article from "../../components/Article/Article.js";
 import InfiniteScroll from "react-infinite-scroller";
 import { Segment, Loader } from "semantic-ui-react";
 

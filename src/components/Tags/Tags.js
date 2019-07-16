@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
-import { getTags } from "../common/api.js";
+import { getTags } from "../../common/api.js";
 import { Link, withRouter } from "react-router-dom";
 import "./Tags.css";
-import MainImage from "../assets/logo.svg";
+import MainImage from "../../assets/logo.svg";
 
 class Tags extends React.Component {
   constructor(props) {

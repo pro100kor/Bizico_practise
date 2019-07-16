@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Card, Icon, Image, Input } from "semantic-ui-react";
 import { getUsers, getUsersNews } from "../../common/api";
 import "./Users.css";
-import Article from "../../components/Article.js";
+import Article from "../../components/Article/Article.js";
 class Users extends React.Component {
   constructor(props) {
     super(props);

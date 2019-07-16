@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { getNewsArticle } from "./../common/api.js";
+import { getNewsArticle } from "../../common/api.js";
 import "./FullNews.scss";
 
 class FullNews extends React.Component {

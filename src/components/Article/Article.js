@@ -2,7 +2,7 @@ import React from "react";
 import "./Article.css";
 import { Grid, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import EmptyImage from "../assets/image.png";
+import EmptyImage from "../../assets/image.png";
 
 class Article extends React.Component {
   constructor(props) {
