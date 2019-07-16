@@ -20,9 +20,3 @@
   padding: 1em 1.5em;
   line-height: 1.4285em;
 }
-.ui.active.transition.visible.dimmer {
-  background-color: white;
-}
-.ui.massive.text.loader {
-  background-color: black;
-}

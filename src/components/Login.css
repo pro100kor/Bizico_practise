@@ -1,0 +1,9 @@
+.ui.form {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5em;
+  width: 20em;
+}
+.ui.button {
+  width: 280px;
+}

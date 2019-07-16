@@ -3,10 +3,7 @@ import { getArticles } from "../../common/api.js";
 import "./News.css";
 import Article from "../../components/Article.js";
 import InfiniteScroll from "react-infinite-scroller";
-import { Segment, Dimmer, Image, Loader } from "semantic-ui-react";
-import whiteLoadingImage from "../../assets/shortParagraphWhite.png";
-import grayLoadingImage from "../../assets/shortParagraphGray.png";
-import darkLoadingImage from "../../assets/shortParagraphDark.png";
+import { Segment, Loader } from "semantic-ui-react";
 
 class News extends React.Component {
   constructor(props) {
@@ -34,14 +31,10 @@ class News extends React.Component {
   render() {
     const { articles } = this.state;
     const loader = (
-      <Segment>
-        <Dimmer active>
-          <Loader size="massive">Loading</Loader>
-        </Dimmer>
-
-        <Image src={whiteLoadingImage} />
-        <Image src={grayLoadingImage} />
-        <Image src={darkLoadingImage} />
+      <Segment className="loader">
+        <Loader size="massive" active>
+          Loading
+        </Loader>
       </Segment>
     );
     return (

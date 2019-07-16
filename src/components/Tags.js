@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { getTags } from "../common/api.js";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "./Tags.css";
 import MainImage from "../assets/logo.svg";
 
@@ -13,7 +13,10 @@ class Tags extends React.Component {
   }
 
   render() {
-    return this.getTagsList();
+    if (this.props.location.pathname === "/auth/login") {
+      return null;
+    }
+    return <div className="ui fixed menu">{this.getTagsList()}</div>;
   }
 
   getTagsList() {
@@ -25,12 +28,14 @@ class Tags extends React.Component {
         </span>
       </Link>
     ));
+
     return (
       <Fragment>
         <Link to="/">
-          <img className="mainLogo" src={MainImage} />
+          <img className="mainLogo" src={MainImage} alt="dev.to" />
         </Link>
         {tagsList}
+        <Link to="/auth/login"> Login </Link>
       </Fragment>
     );
   }
@@ -45,4 +50,4 @@ class Tags extends React.Component {
   }
 }
 
-export default Tags;
+export default withRouter(Tags);
