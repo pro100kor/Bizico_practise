@@ -6,3 +6,12 @@
   height: 21px;
   padding: 0px 0px 0px 5px;
 }
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+.loginWord {
+  margin-left: 15px;
+  color: #66e2d5;
+  font-size: 20px;
+}

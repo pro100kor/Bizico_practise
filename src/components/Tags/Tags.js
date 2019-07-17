@@ -34,8 +34,10 @@ class Tags extends React.Component {
         <Link to="/">
           <img className="mainLogo" src={MainImage} alt="dev.to" />
         </Link>
-        {tagsList}
-        <Link to="/auth/login"> Login </Link>
+        <Link className="loginWord" to="/auth/login">
+          Login
+        </Link>
+        <div className="centered">{tagsList}</div>
       </Fragment>
     );
   }

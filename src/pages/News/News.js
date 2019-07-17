@@ -30,13 +30,7 @@ class News extends React.Component {
 
   render() {
     const { articles } = this.state;
-    const loader = (
-      <Segment className="loader">
-        <Loader size="massive" active>
-          Loading
-        </Loader>
-      </Segment>
-    );
+    const loader = <Loader active inline="centered" />;
     return (
       <InfiniteScroll
         pageStart={0}
