@@ -1,6 +1,6 @@
 import "./Login.css";
 import React, { Fragment } from "react";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Message } from "semantic-ui-react";
 import Cookies from "js-cookie";
 import { users } from "../../common/auth.js";
 
@@ -9,10 +9,10 @@ class Login extends React.Component {
     super(props);
     this.state = {
       login: "null",
-      password: "null"
+      password: "null",
+      error: false
     };
   }
-
   setLogin = e => {
     this.setState({ login: e.target.value });
   };
@@ -22,13 +22,6 @@ class Login extends React.Component {
   };
 
   login = () => {
-    console.log(
-      "Login : ",
-      this.state.login,
-      "Password : ",
-      this.state.password
-    );
-    console.log(users);
     if (
       users.find(
         user =>
@@ -38,12 +31,20 @@ class Login extends React.Component {
     ) {
       Cookies.set("user", `${this.state.login}.${this.state.password}`);
       this.props.history.push("/");
+    } else {
+      console.log("Невірний логін або пароль");
+      this.setState({
+        error: true
+      });
     }
   };
 
   render() {
     return (
-      <Fragment className="login">
+      <Fragment>
+        {this.state.error && (
+          <Message error header="Упсики" content="Невірний логін або пароль." />
+        )}
         <Form>
           <Form.Field>
             <label>Login</label>

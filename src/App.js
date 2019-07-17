@@ -12,12 +12,11 @@ class App extends React.Component {
     return (
       <Router>
         <Tags />
-        <Route path="/users/:username" component={Users} />
-        <Route exact path="/" component={News} />
-        <Route exact path="/:tag" component={News} />
-        <Route path="/articles/:id" component={FullNews} />
+        <PrivateRoute path="/users/:username" component={Users} />
+        <PrivateRoute exact path="/" component={News} />
+        <PrivateRoute exact path="/:tag" component={News} />
+        <PrivateRoute path="/articles/:id" component={FullNews} />
         <Route path="/auth/login" component={Login} />
-        <PrivateRoute path="/test/test" component={News} />
       </Router>
     );
   }
