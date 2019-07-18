@@ -1,15 +1,18 @@
 .ui.main.container {
   margin-top: 7em;
 }
+
 .userscontant.main.container {
   margin-left: auto;
   margin-right: auto;
   margin-top: 5em;
   width: 20em;
 }
+
 .ui.fixed.menu {
   padding-top: 7px;
 }
+
 .ui.info.message {
   background-color: #f8ffff;
   color: #276f86;

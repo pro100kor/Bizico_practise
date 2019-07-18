@@ -3,6 +3,10 @@ import { Card, Icon, Image, Input } from "semantic-ui-react";
 import { getUsers, getUsersNews } from "../../common/api";
 import "./Users.css";
 import Article from "../../components/Article/Article.js";
+
+import classNames from "classnames";
+import { SettingsContext } from "../../components/SettingsContentProvider";
+
 class Users extends React.Component {
   constructor(props) {
     super(props);
@@ -14,6 +18,8 @@ class Users extends React.Component {
       tmpArticles: []
     };
   }
+
+  static contextType = SettingsContext;
 
   inputHeandler = e => {
     console.log(e.target.value);
@@ -38,21 +44,27 @@ class Users extends React.Component {
       userLocation,
       articles
     } = this.state;
+    const { mode } = this.context;
+    const isNight = mode === "night";
     //console.log(users);
 
     let usersContent = (
-      <Card align="center">
+      <Card className={classNames("ui card", { dark: isNight })} align="center">
         <Image src={users.profile_image} wrapped ui={false} />
         <Card.Content>
-          <Card.Header>
+          <Card.Header className={{ dark: isNight }}>
             {users.name}
             {userLocation && <span className="wordFrom"> from </span>}
             {users.location}
           </Card.Header>
-          <Card.Meta>
+          <Card.Meta className={classNames("meta", { dark: isNight })}>
             <span className="date">{users.joined_at}</span>
           </Card.Meta>
-          <Card.Description>{users.summary}</Card.Description>
+          <Card.Description
+            className={classNames("description", { dark: isNight })}
+          >
+            {users.summary}
+          </Card.Description>
         </Card.Content>
         <Card.Content extra>
           <div>
@@ -60,7 +72,11 @@ class Users extends React.Component {
               {userWebsiteUrl && (
                 <Fragment>
                   <Icon color="green" name="user" />
-                  <a href={users.website_url} target="blank">
+                  <a
+                    className={classNames("link", { dark: isNight })}
+                    href={users.website_url}
+                    target="blank"
+                  >
                     {users.website_url}
                   </a>
                 </Fragment>
@@ -71,7 +87,11 @@ class Users extends React.Component {
                 {userGitHub && (
                   <Fragment>
                     <Icon color="green" name="github" />
-                    <a href={"https://github.com/" + userGitHub} target="blank">
+                    <a
+                      className={classNames("link", { dark: isNight })}
+                      href={"https://github.com/" + userGitHub}
+                      target="blank"
+                    >
                       {"github.com/" + userGitHub}
                     </a>
                   </Fragment>
@@ -84,6 +104,7 @@ class Users extends React.Component {
                   <Fragment>
                     <Icon color="green" name="twitter" />
                     <a
+                      className={classNames("link", { dark: isNight })}
                       href={"https://twitter.com/" + userTwitter}
                       target="blank"
                     >
@@ -102,6 +123,7 @@ class Users extends React.Component {
         <div className="userscontant main container">
           {usersContent}
           <Input
+            className={classNames("ui icon input", { dark: isNight })}
             icon="search"
             placeholder="Search..."
             onChange={this.inputHeandler}

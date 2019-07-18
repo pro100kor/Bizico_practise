@@ -6,27 +6,47 @@ import MainImage from "../../assets/logo.svg";
 import Cookies from "js-cookie";
 import { Checkbox, Modal, Icon } from "semantic-ui-react";
 import { SettingsContext } from "../SettingsContentProvider.js";
+import classNames from "classnames";
 
 class Tags extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       tags: [],
-      open: false
+      open: false,
+      toggleChecked: false
     };
   }
   static contextType = SettingsContext;
-  show = () => this.setState({ open: true });
+
+  show = () => {
+    if (this.context.mode === "night") {
+      this.setState({ toggleChecked: true });
+    }
+
+    if (this.context.mode === "day") {
+      this.setState({ toggleChecked: false });
+    }
+
+    this.setState({ open: true });
+  };
   close = () => this.setState({ open: false });
-  slider = () => {
+  toggleClick = () => {
     this.context.changeMode();
+    this.setState(({ toggleChecked }) => ({ toggleChecked: !toggleChecked }));
   };
   render() {
     //console.log(this.context);
+    const { mode } = this.context;
+    const isNight = mode === "night";
     if (this.props.location.pathname === "/auth/login") {
       return null;
     }
-    return <div className="ui fixed menu">{this.getTagsList()}</div>;
+    return (
+      <div className={classNames("ui fixed menu", { darkHeader: isNight })}>
+        {this.getTagsList()}
+      </div>
+    );
   }
 
   logout() {
@@ -34,7 +54,9 @@ class Tags extends React.Component {
   }
 
   getTagsList() {
-    const { tags, open } = this.state;
+    const { tags, open, toggleChecked } = this.state;
+    const { mode } = this.context;
+    const isNight = mode === "night";
     const tagsList = tags.map(({ name }) => (
       <Link to={`/${name}`}>
         <span className="tags" key={name}>
@@ -46,17 +68,33 @@ class Tags extends React.Component {
     return (
       <Fragment>
         <Link to="/">
-          <img className="mainLogo" src={MainImage} alt="dev.to" />
+          <img
+            className={classNames("mainLogo", { dark: isNight })}
+            src={MainImage}
+            alt="dev.to"
+          />
         </Link>
         <Link to="/" className="logoutWord" onClick={this.logout}>
           Logout
         </Link>
-        <Icon link color="black" onClick={this.show} name="settings" />
+        <Icon
+          link
+          className={classNames("settings link icon", {
+            settingsDark: isNight
+          })}
+          onClick={this.show}
+          name="settings"
+        />
         <div className="centered">{tagsList}</div>
         <Modal size={"mini"} open={open} onClose={this.close}>
           <Modal.Header>
             day
-            <Checkbox slider onChange={this.slider} className="slider" />
+            <Checkbox
+              toggle
+              checked={toggleChecked}
+              onChange={this.toggleClick}
+              className="slider"
+            />
             night
             {this.context.mode}
           </Modal.Header>

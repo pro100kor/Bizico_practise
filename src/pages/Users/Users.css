@@ -4,3 +4,19 @@
 .ui.icon.input {
   width: 280px;
 }
+.ui.card.dark {
+  background-color: #646685;
+}
+
+.header.dark {
+  color: white !important;
+}
+.meta.dark {
+  color: white !important;
+}
+.description.dark {
+  color: white !important;
+}
+.link.dark {
+  color: white !important;
+}

@@ -11,15 +11,16 @@ class SettingsContentProvider extends React.Component {
 
   changeMode = () => {
     if (this.state.mode === "day") {
+      document.body.style.background = "#3e3f53";
       this.setState({
         mode: "night"
       });
     } else {
+      document.body.style.background = "#ffffff";
       this.setState({
         mode: "day"
       });
     }
-    //console.log(this.state.mode);
   };
 
   render() {

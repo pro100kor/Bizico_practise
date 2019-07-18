@@ -1,10 +1,12 @@
 .tags {
   margin: 15px;
+  color: #66e2d5;
 }
 .mainLogo {
   width: 33px;
   height: 21px;
   padding: 0px 0px 0px 5px;
+  margin-left: 15px;
 }
 .centered {
   margin-left: auto;
@@ -15,10 +17,22 @@
   color: #66e2d5;
   font-size: 20px;
 }
-.black.settings.link.icon {
-  margin-left: 15px;
-}
+
 .slider {
   margin-left: 10px;
   margin-right: 10px;
+}
+.ui.fixed.menu.darkHeader {
+  background-color: black;
+}
+.mainLogo.dark {
+  background-color: white;
+  padding: 4px;
+}
+.settings.link.icon {
+  color: black;
+  margin-left: 15px;
+}
+.settings.link.icon.settingsDark {
+  color: #66e2d5;
 }

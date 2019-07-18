@@ -4,6 +4,8 @@ import "./News.css";
 import Article from "../../components/Article/Article.js";
 import InfiniteScroll from "react-infinite-scroller";
 import { Loader } from "semantic-ui-react";
+import classNames from "classnames";
+import { SettingsContext } from "../../components/SettingsContentProvider.js";
 
 class News extends React.Component {
   constructor(props) {
@@ -16,7 +18,7 @@ class News extends React.Component {
       hasMoreItems: true
     };
   }
-
+  static contextType = SettingsContext;
   loadItems = page => {
     //console.log(page);
     getArticles(this.props.match.params.tag, page).then(result => {
@@ -31,6 +33,8 @@ class News extends React.Component {
   render() {
     const { articles } = this.state;
     const loader = <Loader active inline="centered" />;
+    const { mode } = this.context;
+    const isNight = mode === "night";
     return (
       <InfiniteScroll
         pageStart={0}
@@ -38,7 +42,7 @@ class News extends React.Component {
         hasMore={this.state.hasMoreItems}
         loader={loader}
       >
-        <div className="ui main container">
+        <div className={classNames("ui main container", { dark: isNight })}>
           {articles.map(article => (
             <Article
               title={article.title}
