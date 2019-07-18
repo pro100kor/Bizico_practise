@@ -96,7 +96,6 @@ class Tags extends React.Component {
               className="slider"
             />
             night
-            {this.context.mode}
           </Modal.Header>
         </Modal>
       </Fragment>
