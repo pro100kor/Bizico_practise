@@ -19,7 +19,9 @@ class FullNews extends React.Component {
       <Fragment>
         <div className="fullNewsImageAndTitle">
           <img alt="" src={article.cover_image} />
-          <span className="title">{article.title}</span>
+          <span className="title">
+            <p>{article.title}</p>
+          </span>
         </div>
         <div
           className="fullNewsDiv"
