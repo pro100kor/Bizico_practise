@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import { getNewsArticle } from "../../common/api.js";
 import "./FullNews.scss";
+import { SettingsContext } from "../SettingsContentProvider.js";
+import classNames from "classnames";
 
 class FullNews extends React.Component {
   constructor(props) {
@@ -11,9 +13,12 @@ class FullNews extends React.Component {
       article: []
     };
   }
+  static contextType = SettingsContext;
 
   render() {
     const { article } = this.state;
+    const { mode } = this.context;
+    const isNight = mode === "night";
 
     return (
       <Fragment>
@@ -24,7 +29,7 @@ class FullNews extends React.Component {
           </span>
         </div>
         <div
-          className="fullNewsDiv"
+          className={classNames("fullNewsDiv", { dark: isNight })}
           dangerouslySetInnerHTML={{ __html: article.body_html }}
         />
       </Fragment>
